@@ -6,7 +6,6 @@ import FilterBar from "../components/FilterBar";
 import { fetchBrands } from "../services/fetchBrands";
 import { fetchProducts } from "../services/fetchProducts";
 
-
 const CatalogPage = () => {
 
   const dispatch = useDispatch();

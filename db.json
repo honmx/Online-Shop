@@ -10,7 +10,43 @@
         "value": 27.12
       },
       "image": "/images/1.png",
-      "brand": 9
+      "brand": 9,
+      "config": {
+        "sizes": [
+          {
+            "id": 1,
+            "size": "s",
+            "isAvailable": true
+          },
+          {
+            "id": 2,
+            "size": "m",
+            "isAvailable": true
+          },
+          {
+            "id": 3,
+            "size": "l",
+            "isAvailable": true
+          }
+        ],
+        "colors": [
+          {
+            "id": 1,
+            "color": "#fff",
+            "isAvailable": true
+          },
+          {
+            "id": 2,
+            "color": "#000",
+            "isAvailable": true
+          },
+          {
+            "id": 3,
+            "color": "#ff0000",
+            "isAvailable": true
+          }
+        ]
+      }
     },
     {
       "type": "simple",
@@ -34,7 +70,43 @@
         "value": 28.91
       },
       "image": "/images/3.png",
-      "brand": 2
+      "brand": 2,
+      "config": {
+        "sizes": [
+          {
+            "id": 1,
+            "size": "s",
+            "isAvailable": true
+          },
+          {
+            "id": 2,
+            "size": "m",
+            "isAvailable": true
+          },
+          {
+            "id": 3,
+            "size": "l",
+            "isAvailable": false
+          }
+        ],
+        "colors": [
+          {
+            "id": 1,
+            "color": "#fff",
+            "isAvailable": false
+          },
+          {
+            "id": 2,
+            "color": "#000",
+            "isAvailable": true
+          },
+          {
+            "id": 3,
+            "color": "#ff0000",
+            "isAvailable": true
+          }
+        ]
+      }
     },
     {
       "type": "simple",
@@ -94,7 +166,38 @@
         "value": 92.32
       },
       "image": "/images/8.png",
-      "brand": 1
+      "brand": 1,
+      "config": {
+        "sizes": [
+          {
+            "id": 1,
+            "size": "m",
+            "isAvailable": true
+          },
+          {
+            "id": 2,
+            "size": "xl",
+            "isAvailable": true
+          }
+        ],
+        "colors": [
+          {
+            "id": 1,
+            "color": "#fff",
+            "isAvailable": true
+          },
+          {
+            "id": 2,
+            "color": "#000",
+            "isAvailable": true
+          },
+          {
+            "id": 3,
+            "color": "#00ff00",
+            "isAvailable": true
+          }
+        ]
+      }
     },
     {
       "type": "simple",
@@ -106,7 +209,33 @@
         "value": 53.40
       },
       "image": "/images/9.png",
-      "brand": 2
+      "brand": 2,
+      "config": {
+        "sizes": [
+          {
+            "id": 1,
+            "size": "s",
+            "isAvailable": false
+          },
+          {
+            "id": 2,
+            "size": "m",
+            "isAvailable": false
+          },
+          {
+            "id": 3,
+            "size": "l",
+            "isAvailable": true
+          }
+        ],
+        "colors": [
+          {
+            "id": 1,
+            "color": "#8811aa",
+            "isAvailable": true
+          }
+        ]
+      }
     }
   ],
   "brands": [

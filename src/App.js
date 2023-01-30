@@ -1,6 +1,5 @@
-import React, { useEffect } from "react"
+import React from "react"
 import './index.css';
-import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import CatalogPage from "./pages/CatalogPage";
