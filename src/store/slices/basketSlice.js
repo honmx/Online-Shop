@@ -12,8 +12,6 @@ const basketSlice = createSlice({
         return item.id === action.payload.id &&
                item.color === action.payload.color && 
                item.size === action.payload.size
-        //  item?.config?.colors[item?.color - 1]?.color === action.payload?.config?.colors[action.payload?.color - 1]?.color &&
-        //  item?.config?.sizes[item?.size - 1]?.size === action.payload?.config?.sizes[action.payload?.size - 1]?.size;
       });
 
       if (indexOfExistingProduct !== -1) state.basket[indexOfExistingProduct].quantity += 1;

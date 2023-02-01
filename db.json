@@ -130,7 +130,21 @@
         "value": 88.00
       },
       "image": "/images/5.png",
-      "brand": 3
+      "brand": 3,
+      "config": {
+        "colors": [
+          {
+            "id": 1,
+            "color": "#99aa55",
+            "isAvailable": true
+          },
+          {
+            "id": 2,
+            "color": "#000",
+            "isAvailable": false
+          }
+        ]
+      }
     },
     {
       "type": "simple",

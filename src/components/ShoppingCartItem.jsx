@@ -3,6 +3,7 @@ import { Box, TableCell, TableRow, Typography, TextField, IconButton } from "@mu
 import { useDispatch } from "react-redux";
 import { changeItemQuantity, deleteItem } from "../store/slices/basketSlice";
 import DeleteIcon from '@mui/icons-material/Delete';
+import CartProductInfo from "./CartProductInfo";
 
 const ShoppingCartItem = ({ item }) => {
 
@@ -41,25 +42,7 @@ const ShoppingCartItem = ({ item }) => {
         }}>
           <img style={{ width: "100%", height: "100%" }} src={require("../assets/img/no_img.jpg")} />
         </Box>
-        <Box>
-          <Typography>Brand {item.brand} / {item.title}</Typography>
-          {
-            item.size &&
-            <Typography fontWeight={100}>Size: {item.config.sizes[item.size - 1].size.toUpperCase()}</Typography>
-          }
-          {
-            item.color &&
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Typography fontWeight={100}>Color:</Typography>
-              <Box sx={{
-                width: "15px",
-                height: "15px",
-                backgroundColor: item.config.colors[item.color - 1].color.toUpperCase(),
-                ml: 0.5
-              }}></Box>
-            </Box>
-          }
-        </Box>
+        <CartProductInfo item={item} />
       </TableCell>
       <TableCell>${item.regular_price.value}</TableCell>
       <TableCell sx={{ textAlign: "center" }}>

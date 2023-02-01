@@ -1,10 +1,15 @@
-import { Container, Paper, Typography } from "@mui/material";
+import { Container, IconButton, Paper, Typography } from "@mui/material";
 import React from "react"
 import ShoppingCart from "../components/ShoppingCart";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
+
+  const navigate = useNavigate();
+
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" sx={{position: "relative"}}>
       <Paper
         elevation={12}
         sx={{
@@ -15,6 +20,9 @@ const CartPage = () => {
         <Typography variant="h5">Shopping cart</Typography>
         <ShoppingCart />
       </Paper>
+      <IconButton sx={{position: "absolute", top: 0, left: -20}} onClick={() => navigate("/")}>
+        <ArrowBackIcon />
+      </IconButton>
     </Container>
   )
 };

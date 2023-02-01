@@ -3,6 +3,8 @@ import AddIcon from '@mui/icons-material/Add';
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setBasketProduct } from "../store/slices/basketSlice";
+import ConfigButtonsContainer from "./ConfigButtonsContainer";
+import Notification from "./Notification";
 
 const Product = ({ product }) => {
 
@@ -13,18 +15,22 @@ const Product = ({ product }) => {
 
   const [successNotification, setSuccessNotification] = useState(false);
   const [errorNotification, setErrorNotification] = useState(false);
-  
+
   const [error, setError] = useState(false);
+  
+  const showNotification = (setNotification) => {
+    setNotification(true);
+    setTimeout(() => {
+      setNotification(false);
+    }, 3000);
+  }
 
   const handleClick = () => {
     setError(false);
 
     if (!selectedColor && product?.config?.colors?.length > 0 || !selectedSize && product?.config?.sizes?.length > 0) {
       setError(true);
-      setErrorNotification(true);
-      setTimeout(() => {
-        setErrorNotification(false);
-      }, 3000);
+      showNotification(setErrorNotification)
     } else {
       const selectedProduct = {
         ...product,
@@ -33,10 +39,7 @@ const Product = ({ product }) => {
       }
 
       dispatch(setBasketProduct(selectedProduct));
-      setSuccessNotification(true);
-      setTimeout(() => {
-        setSuccessNotification(false);
-      }, 3000);
+      showNotification(setSuccessNotification);
     }
   }
 
@@ -47,6 +50,7 @@ const Product = ({ product }) => {
   const selectSize = (id) => {
     setSize(prev => prev === id ? null : id);
   }
+
 
   return (
     <Grid item xs={4} >
@@ -62,52 +66,21 @@ const Product = ({ product }) => {
         <Typography fontWeight={100}>${product.regular_price.value}</Typography>
         {
           product?.config?.colors?.length > 0 &&
-          // colors
-          <ButtonGroup sx={{ display: "block" }}>
-            {
-              product.config.colors.map(color => {
-                return (
-                  // separate color
-                  <Button
-                    key={color.color}
-                    disabled={!color.isAvailable}
-                    onClick={() => selectColor(color.id)}
-                    sx={{
-                      width: "40px",
-                      height: "25px",
-                      backgroundColor: color.color,
-                      outline: color.id === selectedColor ? "3px solid #ffa500" : "none"
-                    }}
-                  ></Button>
-                )
-              })
-            }
-          </ButtonGroup>
+          <ConfigButtonsContainer
+            product={product}
+            type="color"
+            select={selectColor}
+            selected={selectedColor}
+          />
         }
         {
           product?.config?.sizes?.length > 0 &&
-          // sizes
-          <ButtonGroup sx={{ display: "block" }}>
-            {
-              product.config.sizes.map(size => {
-                return (
-                  // separate size
-                  <Button
-                    key={size.size}
-                    disabled={!size.isAvailable}
-                    onClick={() => selectSize(size.id)}
-                    sx={{
-                      width: "40px",
-                      height: "25px",
-                      outline: size.id === selectedSize ? "3px solid #ffa500" : "none"
-                    }}
-                  >
-                    {size.size}
-                  </Button>
-                )
-              })
-            }
-          </ButtonGroup>
+          <ConfigButtonsContainer
+            product={product}
+            type="size"
+            select={selectSize}
+            selected={selectedSize}
+          />
         }
         <IconButton
           onClick={handleClick}
@@ -120,26 +93,10 @@ const Product = ({ product }) => {
           <AddIcon />
         </IconButton>
       </Paper>
-      <Snackbar
-        open={successNotification}
-        // message="The product had been added to the cart"
-        anchorOrigin={{ "horizontal": "center", "vertical": "top" }}
-      >
-        <Alert severity="success">
-          The product had been added to the cart
-        </Alert>
-      </Snackbar>
       {
-        error &&
-        <Snackbar
-          open={errorNotification}
-          // message="You must selected color and size"
-          anchorOrigin={{ "horizontal": "center", "vertical": "top" }}
-        >
-          <Alert severity="error">
-            You must selected color and size
-          </Alert>
-        </Snackbar>
+        error ?
+          <Notification open={errorNotification} severity="error" /> :
+          <Notification open={successNotification} severity="success" />
       }
     </Grid>
   )
