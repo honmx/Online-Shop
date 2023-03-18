@@ -1,7 +1,7 @@
 import { Table, TableCell, TableHead, TableRow, TableBody, Typography } from "@mui/material";
 import React from "react"
 import { useSelector } from "react-redux";
-import { hash } from "../helpers/hash";
+import { hash } from "../helpers/hash/hash";
 import ShoppingCartItem from "./ShoppingCartItem";
 
 const ShoppingCart = () => {
